@@ -2,36 +2,42 @@ public class BankAccount {
  private String firstName;
  private String lastName;
  private int accountID;
- private double balance = 0;
+ private double balance;
 
-  public BankAccount(String firstName, String lastName, int accountID, double balance){
+  public BankAccount(String firstName, String lastName, int accountID){
     try{
       this.firstName = firstName;
       this.lastName = lastName;
       this.accountID = accountID;
-      this.balance = balance;
+      this.balance = 0;
     } catch (Exception e) {
       System.out.println("Error: could not create account");
     }
 
   }
+  //setters
+
+  public void setLastName(String lastName){
+    this.lastName = lastName;
+  }
+
+  public void setFirstName(String firstName){
+    this.firstName = firstName;
+  }
+
+  public void setAccountID(int accountID){
+    this.accountID = accountID;
+  }
+
 
   // getters
 
   public String getFirstName() {
-    try {
-      return firstName;
-    } catch (Exception e) {
-      return "";
-    }
+    return firstName;
   }
 
   public String getLastName() {
-    try {
-      return lastName;
-    } catch (Exception e) {
-      return "";
-    }
+    return lastName;
   }
 
   public int getAccountID(){
@@ -53,7 +59,7 @@ public class BankAccount {
     return balance;
   }
 
-  public void getSummary(){
+  public void accountSummary(){
     System.out.println("First Name: " + firstName);
     System.out.println("Last Name: " + lastName);
     System.out.println("Account id: " + accountID);
