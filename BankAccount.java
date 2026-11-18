@@ -48,5 +48,16 @@ public class BankAccount {
     return balance;
   }
 
+  public double withdrawal(double amount){
+    balance -= amount;
+    return balance;
+  }
+
+  public void getSummary(){
+    System.out.println("First Name: " + firstName);
+    System.out.println("Last Name: " + lastName);
+    System.out.println("Account id: " + accountID);
+    System.out.println("Balance: " + balance);
+  }
 
 }
