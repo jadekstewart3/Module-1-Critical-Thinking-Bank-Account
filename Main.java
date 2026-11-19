@@ -16,6 +16,10 @@ public class Main {
 
   public static int getMenuChoice(int min, int max){
     while(true){
+      System.out.println("1. Display account details");
+      System.out.println("2. Deposit cash");
+      System.out.println("3. Withdraw cash");
+      System.out.println("4. Exit");
       System.out.println("Please select an option " + min + "-" + max + ": ");
       String userInput = scnr.nextLine().trim();
       try{
@@ -30,28 +34,8 @@ public class Main {
     }
   }
 
-  public static double getAmount(String prompt){
-    while(true){
-      System.out.println(prompt);
-      String userInput = scnr.nextLine().trim();
-      try{
-        double amount = Double.parseDouble(userInput);
-        if(amount > 0){
-          return amount;
-        }
-        System.out.println("Please enter an amount greater than 0.");
-      } catch (NumberFormatException e){
-          System.out.println("Please enter a valid dollar amount (e.g. 25.50).");
-      }
-    }
-  }
-
   public static void mainMenu(){
     int choice = 0;
-    System.out.println("1. Display account details");
-    System.out.println("2. Deposit cash");
-    System.out.println("3. Withdraw cash");
-    System.out.println("4. Exit");
     while(choice != 4){
       choice = getMenuChoice(MIN, MAX);
 
@@ -59,14 +43,22 @@ public class Main {
         account.displayAccount();
 
       } else if(choice == 2){
-        double depositAmount = getAmount("Please enter the amount you would like to deposit: ");
-        account.deposit(depositAmount);
-
+        while(true){
+          System.out.println("Please enter the amount you would like to deposit: ");
+          try {
+            double depositAmount = Double.parseDouble(scnr.nextLine().trim());
+            account.deposit(depositAmount);
+            break;
+          } catch (NumberFormatException e){
+            System.out.println("Error: Please ensure you enter a numeric value.");
+          }
+        }
       } else if(choice == 3){
-        double withdrawAmount = getAmount("Please enter the amount to withdraw: ");
+        System.out.println("Please enter the amount to withdraw: ");
+        double withdrawAmount = Double.parseDouble(scnr.nextLine().trim());
         account.withdrawal(withdrawAmount);
       } else {
-        System.out.println("Good2bye!");
+        System.out.println("Goodbye!");
         scnr.close();
       }
     }

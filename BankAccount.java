@@ -51,7 +51,7 @@ public class BankAccount {
 
   public double deposit(double amount){
     balance += amount;
-    return balance;
+    return balance; 
   }
 
   public double withdrawal(double amount){
@@ -63,7 +63,7 @@ public class BankAccount {
     System.out.println("First Name: " + firstName);
     System.out.println("Last Name: " + lastName);
     System.out.println("Account id: " + accountID);
-    System.out.println("Balance: " + balance);
+    System.out.printf("Balance :%.2f%n ", balance);
   }
 
 }

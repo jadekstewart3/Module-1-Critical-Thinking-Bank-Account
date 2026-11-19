@@ -22,6 +22,7 @@ public class CheckingAccount extends BankAccount{
   public void displayAccount(){
     super.accountSummary();
     System.out.println("Interest Rate: " + interestRate);
+    System.out.println("--------------------------------");
   }
 
 }
