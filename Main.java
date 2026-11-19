@@ -61,10 +61,10 @@ public class Main {
 
       } else if (choice == 2) {
         account.deposit(getAmount("Please enter the amount you would like to deposit: "));
-            
+
       } else if (choice == 3) {
         account.processWithdrawal(getAmount("Please enter the amount to withdraw: "));
-        } else {
+      } else {
         System.out.println("Goodbye!");
         scnr.close();
       }
