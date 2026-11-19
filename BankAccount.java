@@ -5,16 +5,12 @@ public class BankAccount {
  private double balance;
 
   public BankAccount(String firstName, String lastName, int accountID){
-    try{
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.accountID = accountID;
-      this.balance = 0;
-    } catch (Exception e) {
-      System.out.println("Error: could not create account");
-    }
-
-  }
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.accountID = accountID;
+    this.balance = 0;
+  } 
+  
   //setters
 
   public void setLastName(String lastName){

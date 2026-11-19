@@ -1,6 +1,6 @@
 public class CheckingAccount extends BankAccount{
   private double interestRate;
-  double overdraftFee = 30.00;
+  private final double overdraftFee = 30.00;
 
   public CheckingAccount(String firstName, String lastName, int accountID, double interestRate) {
     super(firstName, lastName, accountID);
