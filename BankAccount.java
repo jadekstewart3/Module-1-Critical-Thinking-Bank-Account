@@ -63,7 +63,7 @@ public class BankAccount {
     System.out.println("First Name: " + firstName);
     System.out.println("Last Name: " + lastName);
     System.out.println("Account id: " + accountID);
-    System.out.printf("Balance :%.2f%n ", balance);
+    System.out.printf("Balance: $%.2f%n", balance);
   }
 
 }
