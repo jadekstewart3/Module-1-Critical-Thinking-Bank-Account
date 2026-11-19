@@ -27,7 +27,7 @@ public class Main {
         if (choice >= min && choice <= max) {
           return choice;
         }
-        System.out.println("Please enter a number between" + min + " and " + max + ".");
+        System.out.println("Please enter a number between " + min + " and " + max + ".");
       } catch (NumberFormatException e) {
         System.out.println("Please enter a number.");
       }

@@ -13,8 +13,9 @@ public class CheckingAccount extends BankAccount{
 
   public double processWithdrawal(double amount){
     if(amount > getBalance()){
-      System.out.printf("You have overdrafted your account, Overdraft fee of " + overdraftFee + "applied! Balance:$%.2f%n " , withdrawal(amount));
-      return withdrawal(amount + overdraftFee);
+      withdrawal(amount + overdraftFee);
+      System.out.printf("You have overdrafted your account. Overdraft fee of $%.2f applied! Balance: $%.2f%n", overdraftFee, getBalance());
+      return getBalance();
     }else{
       return withdrawal(amount);
     }
