@@ -15,4 +15,8 @@ public class CheckingAccount extends BankAccount{
     }
   }
 
+  public void displayAccount(){
+    super.accountSummary();
+  }
+
 }
