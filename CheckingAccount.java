@@ -1,10 +1,14 @@
 public class CheckingAccount extends BankAccount{
-  double interestRate;
+  private double interestRate;
   double overdraftFee = 30.00;
 
   public CheckingAccount(String firstName, String lastName, int accountID, double interestRate) {
     super(firstName, lastName, accountID);
     this.interestRate = interestRate;
+  }
+
+  public CheckingAccount(String firstName, String lastName, int accountID){
+    this(firstName, lastName, accountID, 0.02); //default rate
   }
 
   public double processWithdrawal(double amount){
@@ -17,6 +21,7 @@ public class CheckingAccount extends BankAccount{
 
   public void displayAccount(){
     super.accountSummary();
+    System.out.println("Interest Rate: " + interestRate);
   }
 
 }
