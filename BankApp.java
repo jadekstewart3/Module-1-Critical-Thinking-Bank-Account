@@ -78,8 +78,12 @@ public class BankApp {
       public void actionPerformed(ActionEvent e){
         try {
           double amount = Double.parseDouble(amountField.getText());
-          account.deposit(amount);
-          balanceLabel.setText(String.format("Balance: $%.2f", account.getBalance()));
+          if(amount > 0){
+            account.deposit(amount);
+            balanceLabel.setText(String.format("Balance: $%.2f", account.getBalance()));
+          } else {
+            balanceLabel.setText("Please enter a positive number to deposit.");
+          }
         } catch(NumberFormatException ex){
           // the amount field was empty or not a number
           balanceLabel.setText("Please enter a valid number.");
