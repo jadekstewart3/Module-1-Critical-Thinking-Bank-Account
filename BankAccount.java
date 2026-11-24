@@ -34,7 +34,6 @@ public class BankAccount {
     this.accountID = accountID;
   }
 
-
   // getters - give read-only access to the private fields
 
   public String getFirstName() {
