@@ -15,6 +15,7 @@ public class BankApp {
     JLabel balanceLabel = new JLabel("Balance: $0.0");
     JButton depositButton = new JButton("Deposit");
     JButton withdrawButton = new JButton("Withdraw");
+    JButton exitButton = new JButton("Exit");
 
     panel.add(amountLabel);
     panel.add(amountField);
@@ -22,18 +23,21 @@ public class BankApp {
     panel.add(balanceLabel);
     panel.add(depositButton);
     panel.add(withdrawButton);
+    panel.add(exitButton);
   
 
     frame.add(panel);
 
-    CheckingAccount  account = new CheckingAccount("Zack", "Danger", 8675309);
+    String input = JOptionPane.showInputDialog("Enter your starting balance: ");
+    double starting = Double.parseDouble(input);
+    CheckingAccount account = new CheckingAccount("Zack", "Danger", 8675309);
+    account.deposit(starting);
 
     showButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         balanceLabel.setText(String.format("Balace: $%.2f", account.getBalance()));
       }
     });
-
 
     depositButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e){
@@ -55,6 +59,13 @@ public class BankApp {
         } catch(NumberFormatException ex){
           balanceLabel.setText("Please enter a valid number.");
         }
+      }
+    });
+
+    exitButton.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e) {
+        JOptionPane.showInputDialog(null, String.format("Final balance: $%.2f", account.getBalance()));
+        System.exit(0);
       }
     });
 

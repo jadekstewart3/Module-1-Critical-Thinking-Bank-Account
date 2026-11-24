@@ -17,7 +17,7 @@ public class BankAccount {
     this.firstName = firstName;
     this.lastName = lastName;
     this.accountID = accountID;
-    this.balance = 0;
+    this.balance = 0.0;
   }
 
   //setters - allow account details to be changed after creation
@@ -48,7 +48,6 @@ public class BankAccount {
   public int getAccountID(){
     return accountID;
   }
-
 
   // balance has no setter; it only changes through deposit() and withdrawal()
   public double getBalance(){
