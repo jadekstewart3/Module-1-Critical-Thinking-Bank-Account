@@ -26,17 +26,15 @@ public class CheckingAccount extends BankAccount{
    * a message shows the fee and the new (negative) balance.
    * Returns the updated balance.
    */
-  public double processWithdrawal(double amount){
+  public String processWithdrawal(double amount){
     if(amount > getBalance()){
       // overdraft: take out the amount plus the fee in a single withdrawal
       withdrawal(amount + overdraftFee);
-      System.out.printf("You have overdrafted your account. Overdraft fee of $%.2f applied! Balance: $%.2f%n", overdraftFee, getBalance());
-      return getBalance();
+      return String.format("Overdraft fee of $%.2f applied. Balance: $%.2f", overdraftFee, getBalance());
     }else{
       // enough money in the account: normal withdrawal, no fee
       withdrawal(amount);
-      System.out.printf("You have a remaining balance of $%.2f \n", getBalance());
-      return getBalance();
+      return String.format("You have a remaining balance of $%.2f \n", getBalance());
     }
   }
 
