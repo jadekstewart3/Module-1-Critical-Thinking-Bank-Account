@@ -28,11 +28,22 @@ public class BankApp {
 
     frame.add(panel);
 
-    String input = JOptionPane.showInputDialog("Enter your starting balance: ");
-    double starting = Double.parseDouble(input);
+    boolean valid = false;
+    double starting = 0;
+    while(!valid){
+      try{
+        String input = JOptionPane.showInputDialog("Enter your starting balance: ");
+        starting = Double.parseDouble(input);
+        valid = true;
+      } catch (NumberFormatException ex) {
+        balanceLabel.setText("Please enter a valid number");
+      }
+    }
     CheckingAccount account = new CheckingAccount("Zack", "Danger", 8675309);
     account.deposit(starting);
 
+
+    
     showButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         balanceLabel.setText(String.format("Balace: $%.2f", account.getBalance()));
@@ -56,6 +67,7 @@ public class BankApp {
         try{
           double amount = Double.parseDouble(amountField.getText());
           account.processWithdrawal(amount);
+          balanceLabel.setText(String.format("Balace: $%.2f", account.getBalance()));
         } catch(NumberFormatException ex){
           balanceLabel.setText("Please enter a valid number.");
         }
@@ -64,9 +76,9 @@ public class BankApp {
 
     exitButton.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e) {
-        JOptionPane.showInputDialog(null, String.format("Final balance: $%.2f", account.getBalance()));
+        JOptionPane.showMessageDialog(null, String.format("Final balance: $%.2f", account.getBalance()));
         System.exit(0);
-      }
+      } 
     });
 
     frame.setVisible(true);
