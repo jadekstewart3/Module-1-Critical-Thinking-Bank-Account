@@ -98,9 +98,13 @@ public class BankApp {
         try{
           double amount = Double.parseDouble(amountField.getText());
           // processWithdrawal() returns a message (including any overdraft fee), so show it to the user
-          String message = account.processWithdrawal(amount);
-          JOptionPane.showMessageDialog(null, message);
-          balanceLabel.setText(String.format("Balance: $%.2f", account.getBalance()));
+          if(amount > 0){
+            String message = account.processWithdrawal(amount);
+            JOptionPane.showMessageDialog(null, message);
+            balanceLabel.setText(String.format("Balance: $%.2f", account.getBalance()));
+          } else {
+            balanceLabel.setText("Please enter a positive number to withdraw.");
+          }
         } catch(NumberFormatException ex){
           // the amount field was empty or not a number
           balanceLabel.setText("Please enter a valid number.");
