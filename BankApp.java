@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.*;
 
 public class BankApp {
   public static void main(String[] args){
@@ -19,6 +20,14 @@ public class BankApp {
     panel.add(balanceLabel);
 
     frame.add(panel);
+
+    BankAccount  account = new BankAccount("Zack", "Danger", 8675309);
+
+    showButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        balanceLabel.setText(String.format("Balace: $%.2f", account.getBalance()));
+      }
+    });
     frame.setVisible(true);
   }
 }
